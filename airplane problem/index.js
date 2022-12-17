@@ -1,4 +1,4 @@
-const input_arr = [
+const input_arr_sample = [
     [
         [19,25,1],
         [21,29,7],
@@ -28,7 +28,7 @@ const arr_shape = [[3,2] , [4,3],[2,3],[3,4]]
 const nb_passenger = 30
 let current_passenger = 1
 const debug = false;
-const initial_tensor =debug ? input_arr: createIntialArray(arr_shape)
+const initial_tensor =debug ? input_arr_sample: createIntialArray(arr_shape)
 const max_matrix_rows = max_i(arr_shape);
 //filling the aisle seats
 for(let i = 0;i<max_matrix_rows;i++){
@@ -111,24 +111,6 @@ console.log(initial_tensor[2])
 console.log("**********")
 console.log(initial_tensor[3])
 
-function getJSeatVal(initial_tensor,k,i){
-    if( i <0 || i >= arr_shape[k][1] ) return null
-    if( k === 0) return {first: null , second :initial_tensor[k][i][initial_tensor[k][0].length -1] }
-    else if ( k === initial_tensor.length -1 ) return {first:initial_tensor[k][i][0] , second:null}
-
-    return {first: initial_tensor[k][i][0] , second :initial_tensor[k][i][initial_tensor[k][0].length -1] }
-}
-function getJSeat(initial_tensor,k,i){
-    if( i <0 || i >= arr_shape[k][1] ) return null
-    if( k === 0) return {first: null , second :initial_tensor[k][0].length -1 }
-    else if ( k === initial_tensor.length -1 ) return {first:0 , second:null}
-
-    return {first: 0 , second :initial_tensor[k][0].length -1 }
-}
-
-
-
-
 
 
 
@@ -166,3 +148,22 @@ function max_i(arr_shape){
     })
     return max_matrix_rows
 }
+
+function getJSeatVal(initial_tensor,k,i){
+    if( i <0 || i >= arr_shape[k][1] ) return null
+    if( k === 0) return {first: null , second :initial_tensor[k][i][initial_tensor[k][0].length -1] }
+    else if ( k === initial_tensor.length -1 ) return {first:initial_tensor[k][i][0] , second:null}
+
+    return {first: initial_tensor[k][i][0] , second :initial_tensor[k][i][initial_tensor[k][0].length -1] }
+}
+function getJSeat(initial_tensor,k,i){
+    if( i <0 || i >= arr_shape[k][1] ) return null
+    if( k === 0) return {first: null , second :initial_tensor[k][0].length -1 }
+    else if ( k === initial_tensor.length -1 ) return {first:0 , second:null}
+
+    return {first: 0 , second :initial_tensor[k][0].length -1 }
+}
+
+
+
+
