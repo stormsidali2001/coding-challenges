@@ -30,7 +30,7 @@ let current_passenger = 1
 const debug = false;
 const initial_tensor =debug ? input_arr_sample: createIntialArray(arr_shape)
 const max_matrix_rows = max_i(arr_shape);
-//filling the aisle seats
+//filling the aisle seats  
 for(let i = 0;i<max_matrix_rows;i++){
 for( let k=0;k<initial_tensor.length;k++){
     const matrix = initial_tensor[k];
@@ -55,6 +55,11 @@ for( let k=0;k<initial_tensor.length;k++){
 
    
 }
+// k : number of 2d arrays , 
+// r_max : the max number of rows in the 2d sub  arrays
+// time complexity: o(k*r_max)) , 
+// space complexity: o(1)
+
 //filling the window seats-------------------------
 console.log("filling the window seats-------------------------")
 const left_widows_length = arr_shape[0][1]
@@ -68,7 +73,7 @@ else max_state = "equal"
 console.log(`left_widows_length = ${left_widows_length} , right_widows_length=${right_widows_length} , max_state=${max_state}`)
 
 
-for(let i = 0 ;i<max_length;i++){
+for(let i = 0 ;i<max_length&& (current_passenger <nb_passenger);i++){
     if( i <= min_length -1 || max_state === "left"){
         initial_tensor[0][i][0] = current_passenger;
         current_passenger++;
@@ -80,6 +85,11 @@ for(let i = 0 ;i<max_length;i++){
 
    
 }
+// k : number of 2d arrays , 
+// r_max : the max number of rows  in the first   and the last 2d sub arrays
+// time complexity: o(k*r_max)) , 
+// space complexity: o(1)
+
 
 //filling the middele seats
 console.log(initial_tensor)
@@ -102,6 +112,11 @@ for( let k=0;k<initial_tensor.length && (current_passenger <nb_passenger);k++){
 
    
 }
+// k : number of 2d arrays , 
+// r_max : the max number of rows in the 2d sub  arrays
+// J : the maximum number of of columns -2 of each 2d sub array
+// time complexity: o(k*r_max*J)) , 
+// space complexity: o(1)
 console.log("final result : -------------------------------------")
 console.log(initial_tensor[0])
 console.log("**********")
@@ -110,6 +125,12 @@ console.log("**********")
 console.log(initial_tensor[2])
 console.log("**********")
 console.log(initial_tensor[3])
+
+// k : number of 2d arrays , 
+// r_max : the max number of rows in the 2d sub  arrays
+// J : the maximum number of of columns -2 of each 2d sub array
+// total time complixity : o(k*r_max*J))
+// total space complixity: o(1)
 
 
 
